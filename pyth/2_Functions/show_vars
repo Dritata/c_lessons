@@ -1,0 +1,8 @@
+x = 1
+
+def show_vars():
+  y=2
+  print("Globals>>>", globals(), type(globals()))
+  print("Locals>>>>", locals(), type(locals()))
+
+show_vars()

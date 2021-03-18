@@ -1,0 +1,8 @@
+#Пример Break
+target = 10
+for item in items:
+  if item = target:
+    printf("found! ", item)
+    break
+else
+  printf("not found!")

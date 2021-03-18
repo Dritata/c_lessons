@@ -1,0 +1,11 @@
+#Пример Break
+target = 10
+def show_iter(*, new_row, new_coloumn):
+  if new_row==TRUE:
+    print("new row")
+  else:
+    print("not new row")
+  if new_coloumn==TRUE:
+    print("new coloumn")
+  else:
+    print("not new coloumn")

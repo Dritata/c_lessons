@@ -1,0 +1,14 @@
+x =1
+def moidy_loc():
+  global x
+  x = 2
+  y = 1
+  print("x modify = ", x, "y modify = ", y)
+  def bar():
+    nonlocal y
+    print("Bar y = ", y)
+    y = 3
+    print("Bar edited y = ", y)
+
+print(x)
+moidy_loc()
