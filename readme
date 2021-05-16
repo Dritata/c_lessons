@@ -1,1 +1,5 @@
 this is merged branch
+
+git rm -r --cached "any_folder"
+git rm --cached "any_file"
+
