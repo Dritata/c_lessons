@@ -1,0 +1,16 @@
+import re
+
+parsed = {}
+for m1 in re.finditer(r'^\t{1}(?P<proc>[^\t].*?)\s+:\s*\n(?P<body>(^\t{2}[^\t].*?\n(^\t{3}[^\t].*?\n)*)+)', text, flags=re.M):
+    parsed[m1["proc"]] = {}
+    print(f'Procedure: {m1["proc"]}')
+    for m2 in re.finditer(r'^\t{2}(?P<prop_name>[^\t].*?)\s+(?P<prop_value>.+?)\n(?P<options>(^\t{3}[^\t].*?\n)*)', m1["body"], flags=re.M):
+        parsed[m1["proc"]][m2["prop_name"]] = {"value": m2["prop_value"], "options": {}}
+        print(f'   Property `{m2["prop_name"]}` = `{m2["prop_value"]}`')
+        for m3 in re.finditer(r'^\t{3}(?P<name>[^\t].*?),\s+(?P<value>.+?)$', m2["options"], flags=re.M):
+            parsed[m1["proc"]][m2["prop_name"]]["options"][m3["name"]] = m3["value"]
+            print(f'      Option `{m3["name"]}` : `{m3["value"]}`')
+
+print("-"*40)
+from pprint import pprint
+pprint(parsed)
